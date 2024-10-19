@@ -101,4 +101,9 @@ public class ItemPedido {
 	public void setValorDesconto(Double valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
+	public void calcularValores() {
+        this.valorBruto = this.precoVenda * this.quantidade;
+        this.valorDesconto = this.valorBruto * (this.percentualDesconto / 100.0);
+        this.valorLiquido = this.valorBruto - this.valorDesconto;
+   }
 }

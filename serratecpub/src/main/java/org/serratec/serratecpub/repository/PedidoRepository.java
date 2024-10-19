@@ -13,7 +13,8 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 			+ "WHERE TRANSLATE(c.nome, "
 			+ "'ÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÔÖÚÙÛÜÇáàãâäéèêëíìîïóòõôöúùûüç',"
 			+ " 'AAAAAEEEEIIIIOOOOOUUUUCaaaaaeeeeiiiiooooouuuuc') "
-			+ "ILIKE CONCAT('%', TRANSLATE(:nome, "
+			+ "ILIKE CONCAT('%', "
+			+ "TRANSLATE(:nome, "
 			+ "'ÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÔÖÚÙÛÜÇáàãâäéèêëíìîïóòõôöúùûüç', "
 			+ "'AAAAAEEEEIIIIOOOOOUUUUCaaaaaeeeeiiiiooooouuuuc'), '%')")
 	List<Pedido> BuscarPedidoPorNomeCliente(String nome);

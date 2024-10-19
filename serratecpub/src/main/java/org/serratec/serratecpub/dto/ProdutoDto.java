@@ -2,7 +2,6 @@ package org.serratec.serratecpub.dto;
 
 import java.time.LocalDate;
 
-import org.serratec.serratecpub.model.Categoria;
 import org.serratec.serratecpub.model.Produto;
 
 public record ProdutoDto(
@@ -12,8 +11,7 @@ public record ProdutoDto(
 		LocalDate dataCadastro,
 		int qntEstoque,
 		Double valorUnitario,
-		String imagem,
-		Categoria categoria
+		String imagem
 		) {
 		
 		public Produto toEntity() {
@@ -25,12 +23,11 @@ public record ProdutoDto(
 			produto.setQtdEstoque(this.qntEstoque);
 			produto.setValorUnitario(this.valorUnitario);
 			produto.setImagem(this.imagem);
-			produto.setCategoria(this.categoria);
 			return produto;
 		}
 			
 		public static ProdutoDto toDto(Produto produto) {
 			return new ProdutoDto(produto.getId(), produto.getNome(), produto.getDescricao(),produto.getDataCadastro(), produto.getQtdEstoque(),
-					produto.getValorUnitario(), produto.getImagem(), produto.getCategoria());
+					produto.getValorUnitario(), produto.getImagem());
 		}
 }

@@ -1,17 +1,16 @@
 package org.serratec.serratecpub.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.serratec.serratecpub.util.TratamentoDeErro;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -26,6 +25,9 @@ public class Produto {
 	@Size(min = 3, max = 50, message = TratamentoDeErro.SizeMessage)
 	private String nome;
 	@NotBlank(message = TratamentoDeErro.NotBlankMessage)
+	@Enumerated(EnumType.STRING)
+	private CategoriaNome categoria;
+	@NotBlank(message = TratamentoDeErro.NotBlankMessage)
 	@Size(max = 100, message = TratamentoDeErro.SizeMessage)
 	private String descricao;
 	@Positive
@@ -37,9 +39,6 @@ public class Produto {
 	private String imagem;
 	
 	
-	@ManyToOne(cascade= CascadeType.ALL)
-	private Categoria categoria;
-
 	@ManyToOne
 	private ItemPedido ItemPedido;
 	
@@ -80,10 +79,6 @@ public class Produto {
 		return imagem;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -110,9 +105,5 @@ public class Produto {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 }

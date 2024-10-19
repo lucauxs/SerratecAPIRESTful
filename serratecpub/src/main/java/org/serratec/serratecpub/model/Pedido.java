@@ -3,6 +3,8 @@ package org.serratec.serratecpub.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataPedido;
 	private LocalDate dataEntrega;
 	private LocalDate dataEnvio;

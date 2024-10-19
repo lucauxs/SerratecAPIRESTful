@@ -46,11 +46,11 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> excluirCliente(@PathVariable Long id){
+    public ResponseEntity<String> excluirCliente(@PathVariable Long id, ClienteDto cliente){
         if(!clienteService.excluirCliente(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");
         }
-        return ResponseEntity.ok("Cliente com id" + id + " excluído com sucesso!");
+        return ResponseEntity.ok("Cliente "+ cliente.nome() +"com id" + id + " excluído com sucesso!");
     }
 
     @PutMapping("/{id}")

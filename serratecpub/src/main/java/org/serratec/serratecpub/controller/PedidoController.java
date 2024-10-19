@@ -49,7 +49,7 @@ public class PedidoController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deletarPedido(@PathVariable Long id, PedidoDto pedidoDto) {
+	public ResponseEntity<String> deletarPedido(@PathVariable Long id) {
 		if (!pedidoService.apagarPedido(id)) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido não encontrado!");
 		}
